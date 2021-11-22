@@ -1,0 +1,41 @@
+import array
+import numpy as np
+from random import shuffle
+
+
+sequence = [i for i in range(21)]
+shuffle(sequence)
+print(sequence)
+find_num = int(input('Enter number X: '))
+
+def linear_search(sequence, find_num):
+    for i in range(len(sequence)):
+        if sequence[i] == find_num:
+            return i
+    return -1
+print(linear_search(sequence, find_num))
+
+def binary_search(sequence, find_num):
+    if sorted(sequence) != sequence:
+        raise ValueError("Array must be sorted")
+
+    start = 0
+    end = len(sequence) - 1
+    # answer = -1
+
+    while start <= end:
+        center = (start + end) // 2
+        if sequence[center] == find_num:
+            return center
+        elif sequence[center] > find_num:
+            end = center - 1
+        elif sequence[center] < find_num:
+            start = center + 1
+    return -1
+
+result = binary_search(sorted(sequence), find_num)
+
+if result != -1:
+    print("Element is present at index ", str(result))
+else:
+    print("Element is not present in array")
