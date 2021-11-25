@@ -1,12 +1,12 @@
-import array
 import numpy as np
+from random import randint
 from random import shuffle
-
 
 sequence = [i for i in range(21)]
 shuffle(sequence)
 print(sequence)
 find_num = int(input('Enter number X: '))
+
 
 def linear_search(sequence, find_num):
     for i in range(len(sequence)):
@@ -15,6 +15,24 @@ def linear_search(sequence, find_num):
     return -1
 print(linear_search(sequence, find_num))
 
+#либо так ниче не выходит
+def binary_search(sequence, find_num):
+    mid = len(sequence) // 2
+    low = 0
+    high = len(sequence) - 1
+    while sequence[mid] != find_num and low <= high:
+        if find_num > sequence[mid]:
+            low = mid + 1
+        else:
+            high = mid - 1
+        mid = (low + high) // 2
+
+    if low > high:
+        print("No X ")
+    else:
+        print("X = ", mid)
+        
+#либо вот так ниче не выходит
 def binary_search(sequence, find_num):
     if sorted(sequence) != sequence:
         raise ValueError("Array must be sorted")
