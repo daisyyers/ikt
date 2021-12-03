@@ -1,9 +1,4 @@
-import numpy as np
-from random import randint
-from random import shuffle
-
-sequence = [i for i in range(21)]
-shuffle(sequence)
+sequence = [i for i in range(30)]
 print(sequence)
 find_num = int(input('Enter number X: '))
 
@@ -11,35 +6,16 @@ find_num = int(input('Enter number X: '))
 def linear_search(sequence, find_num):
     for i in range(len(sequence)):
         if sequence[i] == find_num:
-            return i
+            return i + 1
     return -1
 print(linear_search(sequence, find_num))
 
-#либо так ниче не выходит
-def binary_search(sequence, find_num):
-    mid = len(sequence) // 2
-    low = 0
-    high = len(sequence) - 1
-    while sequence[mid] != find_num and low <= high:
-        if find_num > sequence[mid]:
-            low = mid + 1
-        else:
-            high = mid - 1
-        mid = (low + high) // 2
-
-    if low > high:
-        print("No X ")
-    else:
-        print("X = ", mid)
-        
-#либо вот так ниче не выходит
 def binary_search(sequence, find_num):
     if sorted(sequence) != sequence:
         raise ValueError("Array must be sorted")
 
     start = 0
     end = len(sequence) - 1
-    # answer = -1
 
     while start <= end:
         center = (start + end) // 2
@@ -51,9 +27,8 @@ def binary_search(sequence, find_num):
             start = center + 1
     return -1
 
-result = binary_search(sorted(sequence), find_num)
-
+result = binary_search(sequence, find_num)
 if result != -1:
-    print("Element is present at index ", str(result))
+    print("Element is present at index ", str(result+1))
 else:
     print("Element is not present in array")
