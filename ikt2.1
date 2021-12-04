@@ -1,0 +1,33 @@
+import random
+from prettytable import PrettyTable
+
+
+def make_table(array):
+    table_col1 = [x[0] for x in array]
+    table_col2 = [x[1] for x in array]
+    if len(array[0]) == 3:
+        table_col3 = [x[2] for x in array]
+    else:
+        table_col3 = None
+    table = PrettyTable()
+    table.add_column("Column-1", table_col1)
+    table.add_column("Column-2", table_col2)
+    if table_col3 is not None:
+        table.add_column("Column-3", table_col3)
+    return table
+
+
+def final_array_b(arraya, arrayb, h):
+    for i in range(h):
+        arrayb[i][0] = max(arraya[i][0] - arraya[i][1], arraya[i][1] - arraya[i][2])
+        arrayb[i][1] = str(((arraya[i][0]/arraya[i][1]) ** 0.5) / arraya[i][2]).split('.', 1)[0]  # always 0
+    return arrayb
+
+
+height = int(input('Enter the size of the array in the format {height}: '))
+array_a = [[round(random.uniform(0, 100), random.randint(0, 4)) for x in range(3)] for y in range(height)] 
+array_b = [[0 for i in range(2)] for j in range(height)]
+array_b = final_array_b(array_a, array_b, height)
+print('Array A:', '\n', make_table(array_a))  
+print('Array B:', '\n', make_table(array_b), '\n')
+
