@@ -2,14 +2,6 @@ import random
 from prettytable import PrettyTable
 
 def make_table(array):
-    """
-    Returns an array in prettytable format
-
-    :param table_col1: array
-    :param table_col2: array
-    :param table_col3: array
-    :return: array
-    """
     table_col1 = [x[0] for x in array]
     table_col2 = [x[1] for x in array]
     if len(array[0]) == 3:
@@ -25,16 +17,9 @@ def make_table(array):
 
 
 def final_array_b(arraya, arrayb, h):
-    """
-    Returns an array_b
-    :param arraya: array
-    :param arrayb: array
-    :param h: int
-    :return: array
-    """
     for i in range(h):
         arrayb[i][0] = max(arraya[i][0] - arraya[i][1], arraya[i][1] - arraya[i][2])
-        arrayb[i][1] = str(((arraya[i][0]/arraya[i][1]) ** 0.5) / arraya[i][2]).split('.', 1)[0]  # always 0
+        arrayb[i][1] = str(((arraya[i][0]/arraya[i][1]) ** 0.5) / arraya[i][2]).split('.', 1)[0] 
     return arrayb
 
 
