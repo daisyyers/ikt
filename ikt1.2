@@ -1,0 +1,13 @@
+import numpy as np
+
+quantity = int(input('Enter quantity of your numbers: '))
+values = []
+for i in range(quantity):
+    value = float(input(f'enter number {i}: '))
+    values.append(value)
+summ = float(sum(values))
+print('The sum of your numbers is ', summ)
+statistics.mean(values)
+print('The average of your numbers is ', statistics.mean(values))
+massiv = np.array(values)
+print(massiv)
