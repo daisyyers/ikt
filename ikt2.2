@@ -1,0 +1,15 @@
+with open(input('Enter a file name in {name.txt} format: ')) as f:
+    for i in f:
+        array = str(i).split(',')
+    array = [float(s) for s in array]
+    total_s = 0
+    a1 = 0
+    a2 = 0
+    for i in range(len(array)):
+        total_s += array[i]
+        a1 += array[i] ** 4
+        a2 += array[i] ** 2
+    answer = ((total_s ** 4 / a1) / (total_s ** 2 / a2)) ** 0.5
+    print('An array from a file: ', array)
+    print('Sum of the elements: ', total_s)
+    print('The result of square root: ', answer)
