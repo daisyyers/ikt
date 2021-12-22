@@ -1,0 +1,31 @@
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.array([1,3,5,7,9,11], dtype=float)
+y=np.array([-7,-3,1,4,6,12], dtype=float)
+
+
+def newton(x, y, t):
+    summ = 0
+    for i in range(len(x) + 1):
+        ni1 = 1
+        for j in range(0, i - 1):
+            ni1 = ni1 * (t - x[j])
+        summ1 = 0
+        for j in range(0, i):
+            n2 = 1
+            for k in range(0, i):
+                if k == j:
+                    n2 = n2 * 1
+                else:
+                    n2 = n2 * (x[j] - x[k])
+            summ1 = summ1 + (y[j] / n2)
+
+        summ = summ + summ1 * ni1
+    return summ
+
+xnew=np.linspace(np.min(x),np.max(x),100)
+ynew=[newton(x,y,i) for i in xnew]
+plt.plot(x,y,'o',xnew,ynew)
+plt.grid(True)
+plt.show()
+print(ynew)
