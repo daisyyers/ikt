@@ -1,0 +1,15 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import statsmodels.formula.api as sm
+
+x = np.array([5, 10, 15, 20, 25])
+y = np.array([8, 22, 32, 39, 53])
+df = pd.DataFrame({'x': x, 'y': y})
+result = sm.ols(formula="y~x", data=df).fit()
+
+approx = result.params[1] * np.arange(0, 55) + result.params[0]
+
+plt.scatter(df['x'], df['y'])
+plt.plot(np.arange(0, 55), approx)
+plt.show()
